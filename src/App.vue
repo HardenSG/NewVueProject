@@ -1,26 +1,75 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+    <HeaderSection></HeaderSection>
+    <FooterSection></FooterSection>
+    <router-view></router-view>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+ import HeaderSection from '@/components/Header/index.vue'
+ import FooterSection from '@/components/Footer/index.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    HeaderSection,
+    FooterSection
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
+
+a {
+	text-decoration: none;
+	color: #666666;
+	font-size: 12px;
+}
+
+a:hover {
+	color: red;
+}
+
+li {
+	list-style: none;
+}
+
+i, em {
+	font-style: normal;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* Project id 3169833 */
+  src: url('//at.alicdn.com/t/font_3169833_enczmkgiomu.woff2?t=1644806970334') format('woff2'),
+       url('//at.alicdn.com/t/font_3169833_enczmkgiomu.woff?t=1644806970334') format('woff'),
+       url('//at.alicdn.com/t/font_3169833_enczmkgiomu.ttf?t=1644806970334') format('truetype');
+}
+
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+	border: 0;
+	outline: 0;
+	font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+}
+
+.current {
+	color: #c81623;
+}
+
+
+
 </style>
