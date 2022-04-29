@@ -1,6 +1,5 @@
 // 按需引入，createRouter和createWebHashHistory
 import {createRouter,createWebHashHistory} from 'vue-router'
-
 const routes = [
     {
         path:'/home',
@@ -37,7 +36,7 @@ router.beforeEach((to,from,next)=>{
         alert("你需要鉴权！")
         router.push({
             path:'/login',
-            query:{redirect:from.fullPath}
+            query:{redirect:to.fullPath}
         })
             
     }else{
@@ -45,7 +44,16 @@ router.beforeEach((to,from,next)=>{
     }
 })
 
+let orginpush = router.push
 
+// 重写push方法,其实重写的目的就是为了更方面的去处理事情,避免代码冗余难看,所以重写和封装都是要注意要从源头去控制
+router.push = function(location,resolve,reject){
+    if (resolve && reject) {
+        orginpush.call(this,location,resolve,reject)
+    }else{
+        orginpush.call(this,location,()=>{},()=>{})
+    }
+}
 export default router
 
 

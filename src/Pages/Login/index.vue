@@ -16,7 +16,7 @@ export default {
       let fullPath = ref(String())
       function Login(){
         alert("你登陆了！")
-        router.push({path:fullPath.value})
+        console.log(router.push({path:fullPath.value}));
       }
       return{
         fullPath,
@@ -25,7 +25,7 @@ export default {
     },
     beforeRouteEnter(to,from,next){
       next((vc)=>{
-        vc.fullPath = from.path
+        vc.fullPath = to.query.redirect
       })
     }
 }

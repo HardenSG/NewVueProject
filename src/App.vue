@@ -3,18 +3,30 @@
     <HeaderSection></HeaderSection>
     <FooterSection></FooterSection>
     <router-view></router-view>
+    <h2 @click="add">
+      {{$store.state.num}}
+    </h2>
 </div>
 </template>
 
 <script>
  import HeaderSection from '@/components/Header/index.vue'
  import FooterSection from '@/components/Footer/index.vue'
+import store from './store';
 
 export default {
   name: 'App',
   components:{
     HeaderSection,
     FooterSection
+  },
+  setup(){
+    function add(){
+      store.dispatch('addNum',store.state.num+1)
+    }
+    return {
+      add
+    }
   }
 }
 </script>
